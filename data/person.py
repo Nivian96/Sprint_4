@@ -1,6 +1,7 @@
 class Person:
-    name = "Виктория"
-    surname = "Васюкова"
-    address = "Москва, ул. Грина, д. 40, корп. 1"
-    metro_station = "Бульвар Дмитрия Донского"
-    phone_number = "+79167771222"
+    def __init__(self, name, surname, address, metro_station, phone_number):
+        self.name = name
+        self.surname = surname
+        self.address = address
+        self.metro_station = metro_station
+        self.phone_number = phone_number

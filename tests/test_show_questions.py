@@ -1,7 +1,9 @@
+import allure
 import pytest
 from pages.main_page import MainPage
 
 
+@allure.feature('Вопросы о важном')
 class TestMainPage:
     @pytest.mark.parametrize(
         "question_number, expected_answer",
@@ -20,8 +22,11 @@ class TestMainPage:
             (8, "Да, обязательно. Всем самокатов! И Москве, и Московской области."),
         ],
     )
+    @allure.title('При нажатии на вопрос раскрывается соответствующий ответ')
     def test_questions(self, driver, question_number, expected_answer):
         main_page = MainPage(driver)
+        main_page.go_to_site()
+        main_page.click_accept_cookies_button()
         main_page.click_question(question_number)
         answer = main_page.get_answer(question_number)
-        assert answer == expected_answer
+        assert answer == expected_answer, f'При нажатии на {question_number} вопрос раскрывается не тот ответ'

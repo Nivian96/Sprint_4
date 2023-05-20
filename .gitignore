@@ -2,3 +2,4 @@ venv
 main.py
 .pytest_cache
 geckodriver.log
+.idea/**

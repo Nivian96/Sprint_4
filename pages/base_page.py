@@ -3,13 +3,15 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
+    url = "https://qa-scooter.praktikum-services.ru/"
+
     def __init__(self, driver, timeout=10):
         self.driver = driver
         self.timeout = timeout
         self.wait = WebDriverWait(driver, self.timeout)
 
-    def navigate_to_url(self, url):
-        self.driver.get(url)
+    def go_to_site(self):
+        return self.driver.get(self.url)
 
     def scroll_to_element(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)

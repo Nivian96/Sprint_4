@@ -1,13 +1,11 @@
-from data.order_data import OrderData
 from locators.about_rent_page_locators import AboutRentPageLocators
 from pages.base_page import BasePage
+from datetime import date
 
 
 class AboutRentOrderPage(BasePage):
     def fill_in_fields_and_click_order_button(self):
-        self.driver.find_element(*AboutRentPageLocators.date_input).send_keys(
-            OrderData.date
-        )
+        self.driver.find_element(*AboutRentPageLocators.date_input).send_keys(str(date.today()))
         self.driver.find_element(*AboutRentPageLocators.date_picker).click()
         self.driver.find_element(*AboutRentPageLocators.dropdown_control).click()
         self.driver.find_elements(*AboutRentPageLocators.dropdown_option)[6].click()

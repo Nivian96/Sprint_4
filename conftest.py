@@ -1,11 +1,16 @@
 import pytest
 from selenium import webdriver
+from data.person import Person
 
 
 @pytest.fixture
 def driver():
     driver = webdriver.Firefox()
-    driver.maximize_window()
-    driver.implicitly_wait(10)
     yield driver
     driver.quit()
+
+
+@pytest.fixture
+def person():
+    person = Person('Виктория', 'Васюкова', 'Москва', 'Киевская', '89167771122')
+    return person
